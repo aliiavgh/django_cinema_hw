@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     #modules
     'rest_framework',
     'rest_framework_simplejwt',
+    'drf_yasg',
 
     #my apps
     'applications.account',
