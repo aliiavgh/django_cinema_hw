@@ -7,15 +7,7 @@ from applications.movies import services as likes_services
 User = get_user_model()
 
 
-class FanSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = User
-        fields = ('username',)
-
-
 class RatingSerializer(serializers.ModelSerializer):
-    """Добавление рейтинга пользователем"""
     class Meta:
         model = Rating
         fields = ("star", "movie")
@@ -29,13 +21,6 @@ class RatingSerializer(serializers.ModelSerializer):
 
 
 class MovieSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Movie
         fields = ('id', 'title', 'total_likes', 'rating')
-
-    def get_is_fan(self, obj) -> bool:
-        """Check if a `request.user` has liked this tweet (`obj`).
-        """
-        user = self.context.get('request').user
-        return likes_services.is_fan(obj, user)

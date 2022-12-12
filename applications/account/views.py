@@ -7,10 +7,6 @@ from applications.account.serializers import RegisterSerializer
 User = get_user_model()
 
 
-class APIVIew:
-    pass
-
-
 class RegisterApiView(CreateAPIView):
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
